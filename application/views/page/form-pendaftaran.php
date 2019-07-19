@@ -1,5 +1,5 @@
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background-image: url(<?php echo base_url('assets/'); ?>dist/img/batik.png)">
     <!-- Content Header (Page header) -->
     <section class="content-header" style="margin-bottom: 20px;">
       <h1 class="text-center">
@@ -28,7 +28,7 @@
 
                 <div class="form-group">
                   <label>No. RM</label>
-                  <input class="form-control" type="text" value="<?php echo $rm; ?>" name="no_RM" readonly>
+                  <input class="form-control" type="text" maxlength="8" name="no_RM">
                 </div>
 
                 <div class="form-group">
@@ -236,11 +236,7 @@
                 </div>
                 <br>
                 <div class="text-center no-print">
-                  <button type="submit" class="btn btn-primary" style="width: 30%;">Submit</button>
-                  <span>
-                    <a href="#" id="print_v" class="btn btn-info"><i class="fa fa-print"></i> Print</a>
-                  </span>
-
+                  <button type="submit" class="btn btn-primary" style="width: 30%;">Daftarkan Pasien</button>
                 </div>
                 <br>
               </div>
@@ -261,10 +257,6 @@
               <input form="data_pasien" type="text" name="nomor_antrian" value="<?php  echo $antrian;?>" style="display:none" >
             </div>
           </div>
-
-          <!-- <div class="wrp">
-            <img src="<?php echo base_url('assets/');?>dist/img/logo.jpg" style="width: 100%; height: auto;" alt="User Image">
-          </div> -->
         </div>
         <!-- /.col (right) -->
       </div>

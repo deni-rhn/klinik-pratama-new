@@ -105,6 +105,11 @@
 }
 
 </style>
+<?php
+
+$akses = $this->session->userdata('role_id');
+
+?>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="overlay"></div>
 <div class="wrapper">
@@ -112,9 +117,20 @@
     <!-- Logo -->
     <a href="../../pendaftaran.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>REG</b></span>
+      <span class="logo-mini"><b>PRT</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Register</b></span>
+      <?php if($akses == 1) { ?>
+        <span class="logo-lg"><b>ADMIN</b></span>
+      <?php } ?>
+      <?php if($akses == 2) { ?>
+        <span class="logo-lg"><b>DOKTER</b></span>
+      <?php } ?>
+      <?php if($akses == 3) { ?>
+        <span class="logo-lg"><b>KASIR</b></span>
+      <?php } ?>
+      <?php if($akses == 4) { ?>
+        <span class="logo-lg"><b>REGISTER</b></span>
+      <?php } ?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

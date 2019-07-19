@@ -27,6 +27,13 @@ class Datapasien extends CI_Controller {
         $this->load->view('layout/admin/footer');
     }
 
+		public function pemeriksaan()
+		{
+			$this->load->view('layout/admin/header');
+			$this->load->view('page/periksa-pasien');
+			$this->load->view('layout/admin/footer');
+		}
+
     public function terdaftar(){
         $this->load->view('layout/admin/header');
         $this->load->view('page/data-pasien');
@@ -36,6 +43,11 @@ class Datapasien extends CI_Controller {
     public function data_antrian(){
         $this->daftar_pasien->get_data_antrian();
     }
+
+		public function periksa_pasien_all()
+		{
+			$this->daftar_pasien->get_all_pasien_periksa();
+		}
 
     public function get_user(){
         $this->daftar_pasien->user_select();

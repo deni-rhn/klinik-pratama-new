@@ -22,8 +22,8 @@
               <div class="box-body">
 
                 <div class="form-group">
-                  <label>Code</label>
-                  <input class="form-control" type="text" placeholder="Masukan Code Penyakit" name="kode">
+                  <label>Jenis Obat</label>
+                  <input class="form-control" type="text" placeholder="Jenis Obat" name="kode">
                 </div>
 
                 <div class="form-group">
@@ -61,22 +61,6 @@
           </form>
         </div>
 
-        <div class="col-md-3">
-
-          <!-- <div class="info-box" style="margin-bottom: 25px;">
-            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Nomor Antrian</span>
-              <span class="info-box-number"> <?php echo $antrian;?></span>
-              <input form="data_pasien" type="text" name="nomor_antrian" value="<?php  echo $antrian;?>" style="display:none" >
-            </div>
-          </div> -->
-
-          <div class="wrp">
-            <img src="<?php echo base_url('assets/');?>dist/img/logo.jpg" style="width: 100%; height: auto;" alt="User Image">
-          </div>
-        </div>
         <!-- /.col (right) -->
       </div>
       <!-- /.row -->

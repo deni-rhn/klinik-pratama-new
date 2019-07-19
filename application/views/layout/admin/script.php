@@ -18,19 +18,28 @@
             </div>
           </div>
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Isi Hasil Pemeriksaan" id="subyekobj">
+            <input class="form-control" type="text" placeholder="Keluhan Pasien" id="subyekobj">
           </div>
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Isi Hasil Pemeriksaan" id="pemeriksaan">
+            <input class="form-control" type="text" placeholder="Tensi Darah" id="pemeriksaan">
           </div>
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Isi Hasil Pemeriksaan" id="assesment">
+            <input class="form-control" type="text" placeholder="Detak Jantung" id="assesment">
           </div>
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Isi Hasil Pemeriksaan" id="plan">
+            <input class="form-control" type="text" placeholder="Suhu Badan" id="plan">
           </div>
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Isi Hasil Pemeriksaan" id="paraf">
+            <input class="form-control" type="text" placeholder="Berat Badan" id="paraf">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Diagnosa 1" id="d_1">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Diagnosa 2" id="d_2">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Tindakan" id="tindakan">
           </div>
           <button type="button" class="btn btn-success push">add</button>
           <hr>
@@ -38,11 +47,14 @@
             <thead>
                 <tr>
                     <th class="text-center" >Tanggal</th>
-                    <th class="text-center" >Subyektif & Objectif</th>
-                    <th class="text-center" >Pemeriksaan Penunjang</th>
-                    <th class="text-center" >Assesment (ICD X )</th>
-                    <th class="text-center" >Planning (Terapi Rujukan) </th>
-                    <th class="text-center" >Paraf</th>
+                    <th class="text-center" >Keluhan Pasien</th>
+                    <th class="text-center" >Tensi Darah</th>
+                    <th class="text-center" >Detak Jantung</th>
+                    <th class="text-center" >Suhu Badan</th>
+                    <th class="text-center" >Berat Badan</th>
+                    <th class="text-center" >Diagnosa 1</th>
+                    <th class="text-center" >Diagnosa 2</th>
+                    <th class="text-center" >Tindakan</th>
                     <th class="text-center" >action</th>
                 </tr>
             </thead>
@@ -150,10 +162,6 @@
         </div>
         <div class="modal-body">
         <form >
-          <div class="form-group">
-                  <label>Alergi</label>
-                  <input class="form-control" type="text" placeholder="Masukan Jenis Alergi" name="alergi" id="alergi">
-                </div>
 
                 <div class="form-group">
                   <label>No. RM</label>
@@ -166,19 +174,10 @@
                 </div>
 
                 <div class="form-group">
-                  <label>No. Ktp</label>
-                  <input class="form-control" type="text" placeholder="Masukan No KTP" name="no_KTP" id="no_ktp">
-                </div>
-
-                <div class="form-group">
                   <label>No. Telp</label>
                   <input class="form-control" type="text" placeholder="Masukan No Telphone" name="hp" id="hp">
                 </div>
 
-                <div class="form-group">
-                  <label>Prolanis</label>
-                  <input class="form-control" type="text" placeholder="Masukan Prolanis" name="prolanis" id="prolanis">
-                </div>
 
                 <div class="form-group">
                   <label>Nama Pasien</label>
@@ -202,14 +201,7 @@
                   </div>
                 </div>
 
-                <div class="form-inline">
-                  <div class="row">
-                    <div class="form-group col-xs-12">
-                      <label>Bin/Binti</label> <br>
-                      <input class="form-control" type="text" placeholder="Bin/Binti" name="binti" style="width:100%;" id="binti">
-                    </div>
-                  </div>
-                </div>
+
                 <br>
 
                 <div class="form-inline">
@@ -417,6 +409,9 @@
                                       <td> ${v['assesment']}</td>
                                       <td> ${v['planing']}</td>
                                       <td> ${v['paraf']}</td>
+                                      <td> ${v['d_1']}</td>
+                                      <td> ${v['d_2']}</td>
+                                      <td> ${v['tindakan']}</td>
                                       <td class="text-center" ><a href="#" onclick="deleteTb(${$i});return false;"  ><span class="glyphicon glyphicon-remove"></span></a></td>
                                     </tr>`
                             );
@@ -449,8 +444,22 @@
                 var assesment   = $('#assesment').val();
                 var plan        = $('#plan').val();
                 var paraf       = $('#paraf').val();
+                var d_1       = $('#d_1').val();
+                var d_2       = $('#d_2').val();
+                var tindakan       = $('#tindakan').val();
                 if(tanggal !="" && sub !=="" && pemeriksaan !="" && assesment !="" && plan !="" && paraf !="" ){
-                  var pushdt = {'tanggal':tanggal,'subyektif_objectif':sub,'pemeriksaan':pemeriksaan,'assesment':assesment,'planing':plan,'status':1,'paraf':paraf};
+                  var pushdt = {
+                    'tanggal':tanggal,
+                    'subyektif_objectif':sub,
+                    'pemeriksaan':pemeriksaan,
+                    'assesment':assesment,
+                    'planing':plan,
+                    'status':1,
+                    'paraf':paraf,
+                    'd_1' : d_1,
+                    'd_2' : d_2,
+                    'tindakan' : tindakan
+                  };
                   tojsn[0]['data_pasien'].push(pushdt);
                   //refresh tbl
                   $('.mytb').html("");
@@ -463,6 +472,9 @@
                   $('#assesment').val("");
                   $('#plan').val("");
                   $('#paraf').val("");
+                  $('#d_1').val("");
+                  $('#d_2').val("");
+                  $('#tidakan').val("");
                 }else{
                   alert("data harus lengkap");
                 }
@@ -662,6 +674,28 @@
             if( window.location.pathname == "/datapasien/antrian"){
                 $.get( "<?php echo base_url('datapasien/data_antrian') ?>", function( data ) {
                 $('#ismytable').DataTable( {
+                    data: JSON.parse(data),
+                    columns: [
+                        { title: "No. Antrian" },
+                        { title: "No.Rm" },
+                        { title: "Nama" },
+                        { title: "Jenis Kelamin" },
+                        { title: "umur" },
+                        { title: "Alergi" },
+                        { title: "Alamat" },
+                        { title: "No. Telephon" },
+                        { title: "Pekerjaan" },
+                        { title: "Agama" },
+                        { title: "action" }
+                    ],
+
+                    });
+                });
+            }
+
+            if( window.location.pathname == "/datapasien/pemeriksaan"){
+                $.get( "<?php echo base_url('datapasien/periksa_pasien_all') ?>", function( data ) {
+                $('#periksaPasien').DataTable( {
                     data: JSON.parse(data),
                     columns: [
                         { title: "No. Antrian" },

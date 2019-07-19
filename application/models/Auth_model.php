@@ -43,10 +43,15 @@ class Auth_model extends CI_Model {
                    $akses = $this->session->userdata('role_id');
 
                    // logika redirect setelah login
-                   $akses == 1 ? redirect(base_url('/pendaftaran/welcome_home')): redirect(base_url('/dash_dokter'));
-
-
-
+                   if ($akses == 1){
+                     redirect(base_url('/pendaftaran/welcome_home'));
+                   } elseif ($akses == 2) {
+                     redirect(base_url('/datapasien/pemeriksaan'));
+                   } elseif ($akses == 3) {
+                     redirect(base_url('/datapasien/pemeriksaan'));
+                   } elseif ($akses == 4) {
+                     redirect(base_url('/pendaftaran/pasien'));
+                   }
                 }else{
                     echo "email atau password salah";
                 }

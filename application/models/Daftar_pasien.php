@@ -4,6 +4,7 @@ class Daftar_pasien extends CI_Model {
 
     public function __construct(){
         $this->load->database();
+        $akses = $this->session->userdata('role_id');
     }
 
 
@@ -90,6 +91,32 @@ class Daftar_pasien extends CI_Model {
 
     }
 
+    public function get_all_pasien_periksa()
+    {
+      $this->db->order_by('no_antrian','ASC');
+      $query = $this->db->get('pasien');
+      $mydt = array();
+
+      foreach ($query->result() as $antri ) {
+          $mypasien = array(  $antri->no_antrian,
+                              $antri->No_Rm,
+                              $antri->Nama_pasien,
+                              $antri->Jenis_kelamin,
+                              $antri->umur .' '.'tahun' ,
+                              $antri->alergi,
+                              $antri->Dusun.', RT '.$antri->Rt.' RW '.$antri->Rw.' Desa '.$antri->Desa.' Kec.'.$antri->Kecamatan.' Kab. '.$antri->Kabupaten.' Prov.'.$antri->Provinsi ,
+                              $antri->No_HP,
+                              $antri->Pekerjaan,
+                              $antri->Agama,
+                              '<button style="margin-bottom:5px;width:100%;" type="button" class="btn btn-danger" onclick="openmodal('.$antri->id.')" >Periksa</button><span>
+                              <buttton type="button" class="btn btn-warning" onclick="resepObat('.$antri->id.')">Obat Pasien</buttton> </span>'
+                          );
+          array_push($mydt,$mypasien);
+      }
+
+      echo json_encode($mydt);
+    }
+
     public function user_select(){
         $id = $this->input->post('id');
         $this->db->select('pasien.Nama_pasien');
@@ -112,7 +139,10 @@ class Daftar_pasien extends CI_Model {
                           'pemeriksaan' => $pasien->Pemeriksaan_penunjang,
                           'assesment' => $pasien->assesment,
                           'planing'=>$pasien->planning,
-                          'paraf'=>$pasien->paraf );
+                          'paraf'=>$pasien->paraf,
+                          'd_1'=>$pasien->d_1,
+                          'd_2'=>$pasien->d_2,
+                          'tindakan'=>$pasien->tindakan );
             array_push($mytbl['data_pasien'],$arr);
         }
 
@@ -168,7 +198,8 @@ class Daftar_pasien extends CI_Model {
                             $dta->Pekerjaan,
                             '<a  class="btn btn-danger" onclick="editoption('.$dta->id.');return false;" >edit</a>'.'<br>' .
                             '<a style="margin-top:5px;" class="btn btn-warning" onclick="cetakKib('.$dta->id.');return false;" >Cetak KIB</a>'.'<br>' .
-                            '<a style="margin-top:5px;" class="btn btn-info" onclick="showmore('.$dta->id.');return false;" >Info Lebih</a>'.'<br>' 
+                            '<a style="margin-top:5px;" class="btn btn-info" onclick="showmore('.$dta->id.');return false;" >Info Lebih</a>'.'<br>' .
+                            '<a style="margin-top:5px;" class="btn btn-primary" onclick="antri('.$dta->id.');return false;" >Daftarkan Pasien Ini Lagi</a>'
 
                          );
             array_push($arr,$tb);

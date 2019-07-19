@@ -19,10 +19,10 @@ $akses = $this->session->userdata('role_id');
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-      <?php if ($akses == 1) { ?>
-        <li class="header">MENU UTAMA</li>
 
-        <li><a href="<?php echo base_url('pendaftaran/pasien');?>"><i class="fa fa-circle-o"></i> Pendaftaran Pasien Baru</a></li>
+        <li class="header">MENU UTAMA</li>
+        <?php if ($akses == 1 || $akses == 4 ) { ?>
+          <li><a href="<?php echo base_url('pendaftaran/pasien');?>"><i class="fa fa-circle-o"></i> Pendaftaran Pasien Baru</a></li>
 
         <?php } ?>
 
@@ -30,7 +30,7 @@ $akses = $this->session->userdata('role_id');
         <li><a href="<?php echo base_url('rujukan/pasien');?>"><i class="fa fa-circle-o"></i> Data Rujukan</a></li>
         <?php } ?> -->
 
-        <?php if ($akses != 3) { ?>
+        <?php if ($akses == 1) { ?>
         <li><a href="<?php echo base_url('datapasien/terdaftar');?>"><i class="fa fa-circle-o"></i> Data Pasien Terdaftar</a></li>
         <?php } ?>
         <!-- <li class="treeview">
@@ -53,23 +53,22 @@ $akses = $this->session->userdata('role_id');
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('kodeobat/form');?>"><i class="fa fa-circle-o"></i> Masukan kode Obat</a></li>
-            <li><a href="<?php echo base_url('kodeobat/daftar');?>"><i class="fa fa-circle-o"></i> Data Kode Obat</a></li>
+            <li><a href="<?php echo base_url('kodeobat/form');?>"><i class="fa fa-circle-o"></i> Masukan Jenis Obat</a></li>
+            <li><a href="<?php echo base_url('kodeobat/daftar');?>"><i class="fa fa-circle-o"></i> Data Jenis Obat</a></li>
           </ul>
         </li>
       <?php }?>
 
-        <?php if ($akses == 2) { ?>
-        <li><a href="<?php echo base_url('dokter');?>"><i class="fa fa-circle-o"></i> Data Dokter</a></li>
+        <?php if ($akses == 1) { ?>
+          <li><a href="<?php echo base_url('dokter');?>"><i class="fa fa-circle-o"></i> Data Dokter</a></li>
+          <li><a href="<?php echo base_url('datapasien/antrian');?>"><i class="fa fa-circle-o"></i> Data Antrian Pasien</a></li>
         <?php } ?>
 
-        <li><a href="<?php echo base_url('datapasien/antrian');?>"><i class="fa fa-circle-o"></i> Data Antrian Pasien</a></li>
-
-        <?php if ($akses == 1 | $akses == 3) { ?>
+        <?php if ($akses == 1) { ?>
         <li><a href="<?php echo base_url('kasir');?>"><i class="fa fa-circle-o"></i>Data Kasir</a></li>
         <?php } ?>
 
-        <?php if ($akses == 1 ) { ?>
+        <?php if ($akses == 1 | $akses == 4 ) { ?>
           <li class="treeview">
             <a href="#">
               <i class="fa fa-table"></i> <span>Data Laporan</span>
@@ -99,8 +98,16 @@ $akses = $this->session->userdata('role_id');
           </li>
         <?php } ?>
 
-        <?php if($akses == 2) {?>
+        <?php if($akses == 1) {?>
           <li><a href="<?php echo base_url('kodeobat/daftar');?>"><i class="fa fa-circle-o"></i> Cek Ketersediaan Obat</a></li>
+        <?php }?>
+
+        <?php if($akses == 2) {?>
+          <li><a href="<?php echo base_url('datapasien/pemeriksaan');?>"><i class="fa fa-circle-o"></i> Pemeriksaan</a></li>
+        <?php }?>
+
+        <?php if($akses == 3) {?>
+          <li><a href="<?php echo base_url('datapasien/pemeriksaan');?>"><i class="fa fa-circle-o"></i> Pembayaran</a></li>
         <?php }?>
 
       </ul>

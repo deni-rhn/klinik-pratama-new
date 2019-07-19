@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 18, 2019 at 07:52 
+-- Generation Time: Jul 18, 2019 at 07:52
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -474,3 +474,10 @@ MODIFY `id` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+alter table data_pasien
+add column d_1 varchar(255),
+add column d_2 varchar(255),
+add column tindakan varchar(255)

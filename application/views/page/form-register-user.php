@@ -13,7 +13,7 @@
       <div class="row">
         <!-- /.col (left) -->
 
-        <div class="col-md-8 col-md-offset-1">
+        <div class="col-md-8 col-md-offset-2">
           <form id="data_pasien" action="<?php echo base_url('auth/daftar');?>" method="post" >
             <div class="box box-primary">
               <div class="box-header">
@@ -41,6 +41,8 @@
                   <select class="form-control" name="role" >
                     <option value='1'>Admin</option>
                     <option value='2'>Dokter</option>
+                    <option value='3'>Kasir</option>
+                    <option value='4'>Register/Pendaftar Pasien</option>
                   </select>
                 </div>
 
@@ -56,12 +58,6 @@
           </form>
         </div>
 
-        <div class="col-md-3">
-
-          <div class="wrp">
-            <img src="<?php echo base_url('assets/');?>dist/img/logo.jpg" style="width: 100%; height: auto;" alt="User Image">
-          </div>
-        </div>
         <!-- /.col (right) -->
       </div>
       <!-- /.row -->
